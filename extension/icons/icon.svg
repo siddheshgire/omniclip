@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#grad)" />
+  <!-- Bookmark / Clipper Graphic -->
+  <path d="M40 32 C40 28 43 25 47 25 L81 25 C85 25 88 28 88 32 L88 98 L64 82 L40 98 Z" fill="#ffffff" fill-opacity="0.95" />
+  <!-- AI Sparkle in center -->
+  <path d="M64 42 L66.5 50.5 L75 53 L66.5 55.5 L64 64 L61.5 55.5 L53 53 L61.5 50.5 Z" fill="#8b5cf6" />
+</svg>

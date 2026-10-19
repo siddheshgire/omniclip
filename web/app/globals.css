@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+  }
+
+  body {
+    background-color: #090a0f;
+    color: #f3f4f6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #232734;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Markdown typography in reader mode */
+.prose-dark {
+  color: #d1d5db;
+  line-height: 1.75;
+}
+.prose-dark h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.prose-dark h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.prose-dark h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.prose-dark p {
+  margin-bottom: 1rem;
+}
+.prose-dark pre {
+  background-color: #11131a;
+  border: 1px solid #232734;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+.prose-dark blockquote {
+  border-left: 3px solid #6366f1;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+.prose-dark ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose-dark ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose-dark li {
+  margin-bottom: 0.25rem;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniClip Assistant</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="panel-layout">
+    <!-- Top Bar -->
+    <header class="panel-header">
+      <div class="brand">
+        <svg viewBox="0 0 128 128" width="20" height="20">
+          <rect width="128" height="128" rx="28" fill="#6366f1" />
+          <path d="M40 32 C40 28 43 25 47 25 L81 25 C85 25 88 28 88 32 L88 98 L64 82 L40 98 Z" fill="#ffffff" />
+          <path d="M64 42 L66.5 50.5 L75 53 L66.5 55.5 L64 64 L61.5 55.5 L53 53 L61.5 50.5 Z" fill="#8b5cf6" />
+        </svg>
+        <span class="brand-title">OmniClip</span>
+      </div>
+      <div class="panel-actions">
+        <button id="btnRefreshTab" class="icon-btn" title="Refresh Active Tab Data">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="tab-clip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+        <span>Clip</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-summary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></svg>
+        <span>Summary</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-chat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span>Chat</span>
+      </button>
+      <button class="nav-tab" data-tab="tab-settings">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="panel-content">
+
+      <!-- TAB 1: CLIP -->
+      <section id="tab-clip" class="tab-panel active">
+        <div class="field-group">
+          <label class="field-label">Page Title</label>
+          <input type="text" id="clipTitle" class="input-text" placeholder="Loading page title..." />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Tags (comma separated)</label>
+          <input type="text" id="clipTags" class="input-text" placeholder="ai, tutorial, system-design" value="web-clip" />
+          <div class="tag-chips" id="suggestedTags">
+            <span class="chip" data-tag="research">+ research</span>
+            <span class="chip" data-tag="engineering">+ engineering</span>
+            <span class="chip" data-tag="design">+ design</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Personal Note / Annotation</label>
+          <textarea id="clipNote" class="textarea" rows="2" placeholder="Add your thoughts or why you saved this..."></textarea>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-header">
+            <span>Clean Content Preview</span>
+            <span id="previewStats">0 words</span>
+          </div>
+          <div id="previewContent" class="preview-body">
+            Detecting active webpage text...
+          </div>
+        </div>
+
+        <button id="btnSaveClip" class="btn btn-primary full-width">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Save to Second Brain</span>
+        </button>
+      </section>
+
+      <!-- TAB 2: AI SUMMARY -->
+      <section id="tab-summary" class="tab-panel">
+        <div class="summary-hero">
+          <h3>AI Executive Summary</h3>
+          <p>Extract instant key insights, core themes, and action items.</p>
+          <button id="btnGenerateSummary" class="btn btn-primary full-width">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Generate Instant Summary</span>
+          </button>
+        </div>
+
+        <div id="summaryResult" class="summary-result hidden">
+          <div class="result-card">
+            <h4>TL;DR</h4>
+            <p id="summaryTldr" class="text-sm"></p>
+          </div>
+
+          <div class="result-card">
+            <h4>Key Takeaways</h4>
+            <ul id="summaryTakeaways" class="bullet-list"></ul>
+          </div>
+
+          <div class="result-card">
+            <h4>Action Items</h4>
+            <ul id="summaryActions" class="bullet-list"></ul>
+          </div>
+
+          <button id="btnAttachSummaryToClip" class="btn btn-secondary full-width">
+            <span>Include this summary in Clip</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 3: CHAT -->
+      <section id="tab-chat" class="tab-panel">
+        <div class="chat-container">
+          <div id="chatMessages" class="chat-messages">
+            <div class="message assistant">
+              <div class="bubble">
+                Hello! I am your OmniClip assistant. Ask me anything about the page you're currently viewing.
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggested Prompts -->
+          <div class="quick-prompts" id="quickPrompts">
+            <button class="prompt-chip">What are the key points?</button>
+            <button class="prompt-chip">Explain to a beginner</button>
+            <button class="prompt-chip">Find any critiques or flaws</button>
+          </div>
+
+          <!-- Input Box -->
+          <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Ask about this article..." />
+            <button id="btnSendChat" class="btn-send">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: SETTINGS -->
+      <section id="tab-settings" class="tab-panel">
+        <div class="field-group">
+          <label class="field-label">Cloud Backend API URL</label>
+          <input type="text" id="settingApiUrl" class="input-text" placeholder="http://localhost:3000" />
+          <span class="field-help">Your Vercel deployment URL or localhost:3000 for local dev.</span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Extension API Token (Optional)</label>
+          <input type="password" id="settingApiKey" class="input-text" placeholder="omniclip_sk_..." />
+          <span class="field-help">Obtained from the OmniClip Web Dashboard Settings.</span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">AI Engine</label>
+          <select id="settingAiProvider" class="select-dropdown">
+            <option value="groq">Groq (LLaMA-3 - Ultra Fast Free Tier)</option>
+            <option value="gemini">Google Gemini 1.5 Flash (Free Tier)</option>
+            <option value="local">Built-in Fast Engine (No API key needed)</option>
+          </select>
+        </div>
+
+        <button id="btnSaveSettings" class="btn btn-primary full-width">
+          <span>Save Preferences</span>
+        </button>
+
+        <div class="status-box">
+          <span class="status-box-title">System Architecture:</span>
+          <p class="status-box-desc">Manifest V3 Side Panel $\leftrightarrow$ Next.js Serverless API $\leftrightarrow$ PostgreSQL (`pgvector`).</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
